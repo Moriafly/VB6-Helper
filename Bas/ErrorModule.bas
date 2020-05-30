@@ -1,0 +1,11 @@
+Attribute VB_Name = "ErrorModule"
+Option Explicit
+
+Public version As String
+Public statustext As String
+
+Public Sub ErrorCatch()
+    Mainfrm.MainStatusBar.BackColor = RGB(202, 81, 0)
+    Mainfrm.StatusLabel.Caption = "´íÎó´úÂë£º" & Err.Number & "  ËµÃ÷£º" & Err.Description
+    Err.Clear
+End Sub
