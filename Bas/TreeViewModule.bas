@@ -5,7 +5,7 @@ Public Sub loadtreeview()
     With Mainfrm
     
     .LeftTreeView.Nodes.Add , , "Visual Basic 6.0", "Visual Basic 6.0"
-    .LeftTreeView.Nodes.Add , , "Support Statement for Visual Basic 6.0", "Windows 上 Visual Basic 6.0 的支持语句"
+    .LeftTreeView.Nodes.Add , , "Support Statement for Visual Basic 6.0", "Windows 上 Visual Basic 6.0 的支持说明"
     .LeftTreeView.Nodes.Add , , "Partner Offers", "合作伙伴优惠"
     .LeftTreeView.Nodes.Add , , "Product Documentation", "产品文档"
         .LeftTreeView.Nodes.Add "Product Documentation", tvwChild, "Visual Basic Documentation Map", "Visual Basic 文档图"

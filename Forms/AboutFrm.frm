@@ -4,7 +4,7 @@ Begin VB.Form AboutFrm
    BackColor       =   &H80000005&
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "关于 VB6 Helper"
-   ClientHeight    =   2190
+   ClientHeight    =   1170
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   6780
@@ -21,7 +21,7 @@ Begin VB.Form AboutFrm
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2190
+   ScaleHeight     =   1170
    ScaleWidth      =   6780
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '所有者中心

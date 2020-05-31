@@ -118,7 +118,6 @@ Begin VB.Form Mainfrm
       _ExtentY        =   7435
       _Version        =   393217
       BorderStyle     =   0
-      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   3
       Appearance      =   0
@@ -146,11 +145,21 @@ Begin VB.Form Mainfrm
          Strikethrough   =   0   'False
       EndProperty
    End
-   Begin VB.Menu AboutMenu 
-      Caption         =   "关于(&A)"
-   End
-   Begin VB.Menu FeedbackMenu 
-      Caption         =   "反馈(&F)"
+   Begin VB.Menu HelpMenu 
+      Caption         =   "帮助(&H)"
+      Begin VB.Menu FeedbackMenu 
+         Caption         =   "反馈(&F)"
+      End
+      Begin VB.Menu WebsiteMenu 
+         Caption         =   "访问官网"
+         Shortcut        =   ^W
+      End
+      Begin VB.Menu Line1 
+         Caption         =   "-"
+      End
+      Begin VB.Menu AboutMenu 
+         Caption         =   "关于 VB6 Helper(&A)"
+      End
    End
 End
 Attribute VB_Name = "Mainfrm"
@@ -159,22 +168,26 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
-
+'API 引用
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Private Declare Function LoadCursor Lib "user32.dll" Alias "LoadCursorA" (ByVal hInstance As Long, ByVal lpCursorName As Long) As Long
 Private Declare Function SetCursor Lib "user32.dll" (ByVal hCursor As Long) As Long
-Private Const IDC_HAND As Long = 32649
 
-Const ME_MINHEIGHT = 15 * 300
-Const ME_MINWIDTH = 15 * 400
+Const IDC_HAND     As Long = 32649
+Const ME_MINHEIGHT As Integer = 15 * 300 '窗体最小高度
+Const ME_MINWIDTH  As Integer = 15 * 400 '窗体最小宽度
+Const WEBSITE      As String = "https://github.com/Moriafly/VB6-Helper" '官方网站
 
-Dim myHand_handle As Long
-Dim ClickStr As String
+Dim myHand_handle  As Long
+Dim ClickStr       As String
 
-
-
-
-Private Sub AboutMenu_Click()
+Private Sub AboutMenu_Click() '打开关于窗体
     AboutFrm.Show 1
+    
+End Sub
+
+Private Sub FeedbackMenu_Click() '打开反馈窗体
+    Feedbackfrm.Show 1
 End Sub
 
 Private Sub Form_Load()
@@ -226,11 +239,17 @@ Private Sub rtf(n As Integer)
             MainRichTextBox.FileName = App.Path & "\Source\" & LeftTreeView.SelectedItem.Key & ".rtf"
         ElseIf n = 2 Then
             MainRichTextBox.FileName = App.Path & "\Source\" & ClickStr & ".rtf"
+        ElseIf n = 3 Then
+            ShellExecute Me.hWnd, vbNullString, ClickStr, vbNullString, vbNullString, 1
         End If
         
             MainMenu.Visible = False
         Exit Sub
 ErrorHandler:
+        If n = 2 Then
+            Call rtf(3)
+            Exit Sub
+        End If
         Call ErrorCatch
     Resume Next
 End Sub
@@ -327,4 +346,13 @@ End Sub
 
 Private Sub MenuClick_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If myHand_handle <> 0 Then SetCursor myHand_handle
+End Sub
+
+Private Sub WebsiteMenu_Click() '访问官网
+On Error GoTo ErrorHandler
+    ShellExecute Me.hWnd, vbNullString, WEBSITE, vbNullString, vbNullString, 1
+    Exit Sub
+ErrorHandler:
+    Call ErrorCatch
+    Resume Next
 End Sub
