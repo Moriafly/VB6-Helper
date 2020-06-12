@@ -10,7 +10,7 @@ Public Sub ErrorCatch()
         Exit Sub
     End Select
     
-    Mainfrm.MainStatusBar.BackColor = RGB(202, 81, 0)
-    Mainfrm.StatusLabel.Caption = "错误代码：" & Err.Number & "  说明：" & Err.Description
+    MDIfrm.MDIStatusBar.BackColor = RGB(202, 81, 0)
+    MDIfrm.StatusLabel.Caption = "错误代码：" & Err.Number & "  说明：" & Err.Description
     Err.Clear
 End Sub

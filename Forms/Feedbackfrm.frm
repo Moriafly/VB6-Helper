@@ -3,10 +3,10 @@ Begin VB.Form Feedbackfrm
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "反馈"
-   ClientHeight    =   1920
+   ClientHeight    =   2310
    ClientLeft      =   45
    ClientTop       =   390
-   ClientWidth     =   2595
+   ClientWidth     =   2910
    BeginProperty Font 
       Name            =   "微软雅黑"
       Size            =   9
@@ -20,10 +20,30 @@ Begin VB.Form Feedbackfrm
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   1920
-   ScaleWidth      =   2595
+   ScaleHeight     =   2310
+   ScaleWidth      =   2910
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '所有者中心
+   Begin VB.Label LinkFeedback 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "GitHub 在线反馈"
+      BeginProperty Font 
+         Name            =   "微软雅黑"
+         Size            =   9
+         Charset         =   134
+         Weight          =   700
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00CC7A00&
+      Height          =   255
+      Left            =   360
+      TabIndex        =   5
+      Top             =   1920
+      Width           =   1440
+   End
    Begin VB.Label LabelX 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
@@ -33,7 +53,7 @@ Begin VB.Form Feedbackfrm
       Index           =   4
       Left            =   120
       TabIndex        =   4
-      Top             =   1200
+      Top             =   1560
       Width           =   360
    End
    Begin VB.Label LabelX 
@@ -78,7 +98,7 @@ Begin VB.Form Feedbackfrm
       Index           =   0
       Left            =   360
       TabIndex        =   0
-      Top             =   1560
+      Top             =   1200
       Width           =   2010
    End
 End
@@ -89,3 +109,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+Private Sub LinkFeedback_Click()
+    Call Link("https://github.com/Moriafly/VB6-Helper/issues")
+End Sub
+
+Private Sub LinkFeedback_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Call myHand
+End Sub

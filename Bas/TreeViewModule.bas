@@ -18,6 +18,16 @@ Public Sub loadtreeview()
             .LeftTreeView.Nodes.Add "Intrinsic Controls", tvwChild, "CheckBox Control", "复选框控件"
         'LeftTreeView.Nodes.Add "Product Documentation", tvwChild, "Visual Basic Documentation Map", "Visual Basic 文档图"
         'LeftTreeView.Nodes.Add "Product Documentation", tvwChild, "Visual Basic Documentation Map", "Visual Basic 文档图"
+        .LeftTreeView.Nodes.Add "Controls Reference", tvwChild, "Others Controls", "其他开源控件"
     
+
+    
+    .LeftTreeView.Nodes.Add , , "Form Beauty", "窗体美化"
+        .LeftTreeView.Nodes.Add "Form Beauty", tvwChild, "Form Theme", "窗体主题"
+
+    .LeftTreeView.Nodes.Add , , "Article", "文章"
+        .LeftTreeView.Nodes.Add "Article", tvwChild, "Why Visual Basic 6 Still Thrives", "为什么 Visual Basic 6 依然经久不衰"
+        .LeftTreeView.Nodes.Add "Article", tvwChild, "VB6 and the Art of the Knuckleball", "VB6 和 Knuckleball（关节球）艺术"
+
     End With
 End Sub
